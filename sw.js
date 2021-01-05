@@ -1,17 +1,17 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-  '/',
-  '/css/todo.css',
-  '/Js/jquery.min.js',
-  '/Js/qrcode.js',
-  '/Js/JsBarcode.all.min.js',
-  '/Js/ean13.min.js',
-  '/Js/todo2.js'
+  '/barcode/',
+  '/barcode/css/todo.css',
+  '/barcode/Js/jquery.min.js',
+  '/barcode/Js/qrcode.js',
+  '/barcode/Js/JsBarcode.all.min.js',
+  '/barcode/Js/ean13.min.js',
+  '/barcode/Js/todo2.js'
 ];
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+    navigator.serviceWorker.register('/barcode/sw.js').then(function(registration) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
