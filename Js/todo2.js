@@ -7,11 +7,11 @@ var barcodeArr = new Array();
 
 // Barcode generation
 inputAdd.addEventListener('click', function () {
-  barcodeArr.push(input.value);
   addBarcode(input.value);
 });
 
 function addBarcode(str) {
+  barcodeArr.push(str);
   barcodes = document.getElementById("todos");
 
   if (str.length == 13) {
