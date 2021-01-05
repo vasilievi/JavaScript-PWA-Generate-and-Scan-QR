@@ -10,11 +10,17 @@ inputAdd.addEventListener('click', function () {
   addBarcode(input.value);
 });
 
+input.addEventListener("keypress", function (keyPressed) {
+  if (keyPressed.which === 13) {
+    addBarcode(this.value);  
+  }
+});
+
 function addBarcode(str) {
   barcodeArr.push(str);
   barcodes = document.getElementById("todos");
 
-  if (str.length == 13) {
+  if (str.length === 13) {
     canvas = document.createElement("canvas");
     barcodes.appendChild(canvas);
 
