@@ -2,7 +2,7 @@
   "short_name": "CS BARCODE GEN",
   "name": "CS BARCODE GEN",
   "description": "CS BARCODE GEN",
-  "start_url": "/",
+  "start_url": "/barcode",
   "background_color": "#fff",
   "theme_color": "#fff",
   "display": "standalone",
