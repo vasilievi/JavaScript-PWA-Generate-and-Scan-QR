@@ -67,6 +67,7 @@ inputLoad.addEventListener('click', function () {
 scanner.addListener('scan', function (content) {
   console.log(content);
   input.value = content;
+  scanner.stop();
 });
 
 inputScan.addEventListener('click', function () {
