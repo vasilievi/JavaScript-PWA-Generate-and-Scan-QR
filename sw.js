@@ -12,7 +12,7 @@ var urlsToCache = [
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/barcode/sw.js').then(function(registration) {
-      // Registration was successful
+      // Registration was successful 
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
       // registration failed :(
