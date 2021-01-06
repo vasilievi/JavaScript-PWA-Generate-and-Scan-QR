@@ -64,56 +64,51 @@ inputLoad.addEventListener('click', function () {
   });
 })
 
-// Scanner
-/* scanner.addListener('scan', function (content) {
-  console.log(content);
-  input.value = content;
-  scanner.stop();
-}); */
-
 inputScan.addEventListener('click', function () {
-  let selectedDeviceId;
-      const codeReader = new ZXing.BrowserMultiFormatReader()
-      console.log('ZXing code reader initialized')
-      codeReader.listVideoInputDevices()
-        .then((videoInputDevices) => {
-          const sourceSelect = document.getElementById('sourceSelect')
-          selectedDeviceId = videoInputDevices[0].deviceId
-          if (videoInputDevices.length >= 1) {
-            videoInputDevices.forEach((element) => {
-              const sourceOption = document.createElement('option')
-              sourceOption.text = element.label
-              sourceOption.value = element.deviceId
-              sourceSelect.appendChild(sourceOption)
-            })
+  // let selectedDeviceId;
+      const codeReader = new ZXing.BrowserMultiFormatReader();
+      console.log('ZXing code reader initialized');
+      VideoInputDevices = codeReader.listVideoInputDevices();
+      selectedDeviceId = VideoInputDevices[VideoInputDevices.length-1];
 
-            sourceSelect.onchange = () => {
-              selectedDeviceId = sourceSelect.value;
-            };
+      codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+        if (result) {
+          console.log(result);
+          input.value = result.text;
+        }
+        if (err && !(err instanceof ZXing.NotFoundException)) {
+          console.error(err);
+          input.value = err;
+        }
+      })
+      console.log(`Started continous decode from camera with id ${selectedDeviceId}`)
+        // .then((videoInputDevices) => {
+        //   //const sourceSelect = document.getElementById('sourceSelect')
+        //   // selectedDeviceId = videoInputDevices[videoInputDevices.length-1].deviceId
+        //   // if (videoInputDevices.length >= 1) {
+        //   //   videoInputDevices.forEach((element) => {
+        //   //     const sourceOption = document.createElement('option')
+        //   //     sourceOption.text = element.label
+        //   //     sourceOption.value = element.deviceId
+        //   //     sourceSelect.appendChild(sourceOption)
+        //   //   })
 
-            const sourceSelectPanel = document.getElementById('sourceSelectPanel')
-            sourceSelectPanel.style.display = 'block'
-          }
+        //     // sourceSelect.onchange = () => {
+        //     //   selectedDeviceId = sourceSelect.value;
+        //     // };
 
-          document.getElementById('startButton').addEventListener('click', () => {
-            codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
-              if (result) {
-                console.log(result)
-                document.getElementById('result').textContent = result.text
-              }
-              if (err && !(err instanceof ZXing.NotFoundException)) {
-                console.error(err)
-                document.getElementById('result').textContent = err
-              }
-            })
-            console.log(`Started continous decode from camera with id ${selectedDeviceId}`)
-          })
+        //     // const sourceSelectPanel = document.getElementById('sourceSelectPanel')
+        //     // sourceSelectPanel.style.display = 'block'
+        //   }
 
-          document.getElementById('resetButton').addEventListener('click', () => {
-            codeReader.reset()
-            document.getElementById('result').textContent = '';
-            console.log('Reset.')
-          })
+
+
+
+          // document.getElementById('resetButton').addEventListener('click', () => {
+          //   codeReader.reset()
+          //   document.getElementById('result').textContent = '';
+          //   console.log('Reset.')
+          // })
 
         })
         .catch((err) => {
