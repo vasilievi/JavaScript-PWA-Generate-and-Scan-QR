@@ -6,7 +6,7 @@ var inputScan = document.getElementById("inputScan");
 
 var barcodeArr = new Array();
 let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-
+let cameras = Instascan.Camera.getCameras();
 
 // Barcode generation
 inputAdd.addEventListener('click', function () {
@@ -64,6 +64,7 @@ inputLoad.addEventListener('click', function () {
   });
 })
 
+// Scanner
 scanner.addListener('scan', function (content) {
   console.log(content);
   input.value = content;
@@ -71,8 +72,6 @@ scanner.addListener('scan', function (content) {
 });
 
 inputScan.addEventListener('click', function () {
-
-  Instascan.Camera.getCameras().then(function (cameras) {
     if (cameras.length > 0) {
       scanner.start(cameras[cameras.length-1]);
     } else {
