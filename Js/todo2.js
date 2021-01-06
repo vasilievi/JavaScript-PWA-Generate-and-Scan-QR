@@ -5,8 +5,8 @@ var inputLoad = document.getElementById("inputLoad");
 var inputScan = document.getElementById("inputScan");
 
 var barcodeArr = new Array();
-let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-let cameras = Instascan.Camera.getCameras();
+/* let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+let cameras = Instascan.Camera.getCameras(); */
 
 // Barcode generation
 inputAdd.addEventListener('click', function () {
@@ -72,14 +72,61 @@ scanner.addListener('scan', function (content) {
 });
 
 inputScan.addEventListener('click', function () {
-    if (cameras.length > 0) {
+  let selectedDeviceId;
+      const codeReader = new ZXing.BrowserMultiFormatReader()
+      console.log('ZXing code reader initialized')
+      codeReader.listVideoInputDevices()
+        .then((videoInputDevices) => {
+          const sourceSelect = document.getElementById('sourceSelect')
+          selectedDeviceId = videoInputDevices[0].deviceId
+          if (videoInputDevices.length >= 1) {
+            videoInputDevices.forEach((element) => {
+              const sourceOption = document.createElement('option')
+              sourceOption.text = element.label
+              sourceOption.value = element.deviceId
+              sourceSelect.appendChild(sourceOption)
+            })
+
+            sourceSelect.onchange = () => {
+              selectedDeviceId = sourceSelect.value;
+            };
+
+            const sourceSelectPanel = document.getElementById('sourceSelectPanel')
+            sourceSelectPanel.style.display = 'block'
+          }
+
+          document.getElementById('startButton').addEventListener('click', () => {
+            codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+              if (result) {
+                console.log(result)
+                document.getElementById('result').textContent = result.text
+              }
+              if (err && !(err instanceof ZXing.NotFoundException)) {
+                console.error(err)
+                document.getElementById('result').textContent = err
+              }
+            })
+            console.log(`Started continous decode from camera with id ${selectedDeviceId}`)
+          })
+
+          document.getElementById('resetButton').addEventListener('click', () => {
+            codeReader.reset()
+            document.getElementById('result').textContent = '';
+            console.log('Reset.')
+          })
+
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+/*     if (cameras.length > 0) {
       scanner.start(cameras[cameras.length-1]);
     } else {
       console.error('No cameras found.');
     }
   }).catch(function (e) {
     console.error(e);
-  });
+  }); */
 })
 
 
