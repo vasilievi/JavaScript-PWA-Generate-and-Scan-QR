@@ -12,7 +12,7 @@ inputAdd.addEventListener('click', function () {
 
 input.addEventListener("keypress", function (keyPressed) {
   if (keyPressed.which === 13) {
-    addBarcode(this.value);  
+    addBarcode(this.value);
   }
 });
 
@@ -33,8 +33,8 @@ function addBarcode(str) {
     qrcode.makeCode(str);
   }
 
-  var para = document.createElement("P",);              
-  para.innerText = str; 
+  var para = document.createElement("P",);
+  para.innerText = str;
   barcodes.appendChild(para);
 }
 
