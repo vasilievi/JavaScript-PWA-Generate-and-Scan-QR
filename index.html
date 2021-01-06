@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="manifest" href="manifest.json">
     <title>CS Barcode gen</title>
-    <!-- <link rel="Stylesheet" href="css/todo.css"> -->
+    <link rel="Stylesheet" href="css/todo.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
         integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <!-- <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet"> -->
@@ -25,6 +25,7 @@
         <input id="inputAdd" class="inputSubmit" type="submit" value="Add">
         <input id="inputSave" class="inputSubmit" type="submit" value="Save">
         <input id="inputLoad" class="inputSubmit" type="submit" value="Load">
+        <input id="inputScan" class="inputSubmit" type="submit" value="Scan">
 
         <div id="todos">
         </div>
@@ -36,9 +37,9 @@
     <script src="Js/qrcode.js"></script>
     <script src="Js/JsBarcode.all.min.js"></script>
     <script src="Js/ean13.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="Js/adapter.min.js"></script>
+    <script src="Js/vue.min.js"></script>
+    <script src="Js/instascan.min.js"></script>
 
     <script src="Js/todo2.js"></script>
     <script src="sw.js"></script>

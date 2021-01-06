@@ -2,8 +2,11 @@ var input = document.querySelector("input[type = 'text']");
 var inputAdd = document.getElementById("inputAdd");
 var inputSave = document.getElementById("inputSave");
 var inputLoad = document.getElementById("inputLoad");
+var inputScan = document.getElementById("inputScan");
 
 var barcodeArr = new Array();
+let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+
 
 // Barcode generation
 inputAdd.addEventListener('click', function () {
@@ -61,19 +64,25 @@ inputLoad.addEventListener('click', function () {
   });
 })
 
-let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 scanner.addListener('scan', function (content) {
   console.log(content);
+  input.value = content;
 });
-Instascan.Camera.getCameras().then(function (cameras) {
-  if (cameras.length > 0) {
-    scanner.start(cameras[0]);
-  } else {
-    console.error('No cameras found.');
-  }
-}).catch(function (e) {
-  console.error(e);
-});
+
+inputLoad.addEventListener('click', function () {
+
+  Instascan.Camera.getCameras().then(function (cameras) {
+    if (cameras.length > 0) {
+      scanner.start(cameras[0]);
+    } else {
+      console.error('No cameras found.');
+    }
+  }).catch(function (e) {
+    console.error(e);
+  });
+})
+
+
 
 
 /* input.addEventListener("keypress", function (keyPressed) {
