@@ -65,11 +65,11 @@ inputLoad.addEventListener('click', function () {
 })
 
 // Scanner
-scanner.addListener('scan', function (content) {
+/* scanner.addListener('scan', function (content) {
   console.log(content);
   input.value = content;
   scanner.stop();
-});
+}); */
 
 inputScan.addEventListener('click', function () {
   let selectedDeviceId;
