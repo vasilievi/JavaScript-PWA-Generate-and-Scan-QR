@@ -69,7 +69,7 @@ scanner.addListener('scan', function (content) {
   input.value = content;
 });
 
-inputLoad.addEventListener('click', function () {
+inputScan.addEventListener('click', function () {
 
   Instascan.Camera.getCameras().then(function (cameras) {
     if (cameras.length > 0) {
