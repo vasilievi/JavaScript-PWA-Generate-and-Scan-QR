@@ -2,47 +2,49 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#317EFB"/>
-    <link rel="apple-touch-icon" href="192.png">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="manifest" href="manifest.json">
-    <title>CS Barcode gen</title>
-    <link rel="Stylesheet" href="css/todo.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet"> -->
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#317EFB" />
+  <link rel="apple-touch-icon" href="192.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="manifest.json">
+  <title>CS Barcode gen</title>
+  <link rel="Stylesheet" href="css/todo.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet"> -->
 </head>
 
 <body>
 
-    <div id="todo">
-        <h1> CS Barcode gen </h1>
-        <input type="text" placeholder="add barcode">
-
-        <input id="inputAdd" class="inputSubmit" type="submit" value="Add">
-        <input id="inputSave" class="inputSubmit" type="submit" value="Save">
-        <input id="inputLoad" class="inputSubmit" type="submit" value="Load">
-        <input id="inputScan" class="inputSubmit" type="submit" value="Scan">
-
-        <div id="todos">
-        </div>
-    
-          <div>
-            <video id="video" width="300" height="200" style="border: 1px solid gray"></video>
-          </div>
-    
+  <div id="todo">
+    <h1> CS Barcode gen </h1>
+    <div>
+      <video id="video" width="300" height="200" style="border: 1px solid gray"></video>
     </div>
 
-    <script src="Js/jquery.min.js"></script>
-    <script src="Js/qrcode.js"></script>
-    <script src="Js/ean13.min.js"></script>
-    <script src="Js/zxing.js"></script>
+    <input type="text" placeholder="add barcode">
 
-    <script src="Js/todo2.js"></script>
-    <script src="sw.js"></script>
+    <input id="inputAdd" class="inputSubmit" type="submit" value="Add">
+    <input id="inputSave" class="inputSubmit" type="submit" value="Save">
+    <input id="inputLoad" class="inputSubmit" type="submit" value="Load">
+    <input id="inputScan" class="inputSubmit" type="submit" value="Scan">
+
+    <div id="todos">
+    </div>
+
+
+
+  </div>
+
+  <script src="Js/jquery.min.js"></script>
+  <script src="Js/qrcode.js"></script>
+  <script src="Js/ean13.min.js"></script>
+  <script src="Js/zxing.js"></script>
+
+  <script src="Js/todo2.js"></script>
+  <script src="sw.js"></script>
 
 
 </body>
