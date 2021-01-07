@@ -3,10 +3,8 @@ var inputAdd = document.getElementById("inputAdd");
 var inputSave = document.getElementById("inputSave");
 var inputLoad = document.getElementById("inputLoad");
 var inputScan = document.getElementById("inputScan");
-
 var barcodeArr = new Array();
-/* let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-let cameras = Instascan.Camera.getCameras(); */
+
 
 // Barcode generation
 inputAdd.addEventListener('click', function () {
@@ -52,6 +50,8 @@ function getLastEan13Digit(ean) {
   return base10Superior - total;
 }
 
+
+
 // Save and load from localstorage
 inputSave.addEventListener('click', function () {
   localStorage.setItem('barcodeArr', JSON.stringify(barcodeArr))
@@ -64,6 +64,8 @@ inputLoad.addEventListener('click', function () {
   });
 })
 
+
+// Scanner
 inputScan.addEventListener('click', function () {
   // let selectedDeviceId;
   const codeReader = new ZXing.BrowserMultiFormatReader();
@@ -71,7 +73,8 @@ inputScan.addEventListener('click', function () {
   VideoInputDevices = codeReader.listVideoInputDevices();
   selectedDeviceId = VideoInputDevices[VideoInputDevices.length - 1];
 
-  codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+  //codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+  codeReader.decodeOnceFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
     if (result) {
       console.log(result);
       input.value = result.text;
