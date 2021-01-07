@@ -7,7 +7,7 @@ var urlsToCache = [
   '/barcode/Js/JsBarcode.all.min.js',
   '/barcode/Js/ean13.min.js',
   '/barcode/Js/todo2.js'
-];   
+];    
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
