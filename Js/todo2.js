@@ -73,11 +73,11 @@ inputScan.addEventListener('click', function () {
   VideoInputDevices = codeReader.listVideoInputDevices();
   selectedDeviceId = VideoInputDevices[VideoInputDevices.length - 1];
 
-  //codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
-  codeReader.decodeOnceFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+  codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
     if (result) {
       console.log(result);
       input.value = result.text;
+      codeReader.reset();
     }
     if (err && !(err instanceof ZXing.NotFoundException)) {
       console.error(err);
