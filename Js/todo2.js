@@ -66,21 +66,20 @@ inputLoad.addEventListener('click', function () {
 
 inputScan.addEventListener('click', function () {
   // let selectedDeviceId;
-      const codeReader = new ZXing.BrowserMultiFormatReader();
-      console.log('ZXing code reader initialized');
-      VideoInputDevices = codeReader.listVideoInputDevices();
-      selectedDeviceId = VideoInputDevices[VideoInputDevices.length-1];
+  const codeReader = new ZXing.BrowserMultiFormatReader();
+  console.log('ZXing code reader initialized');
+  VideoInputDevices = codeReader.listVideoInputDevices();
+  selectedDeviceId = VideoInputDevices[VideoInputDevices.length - 1];
 
-      codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
-        if (result) {
-          console.log(result);
-          input.value = result.text;
-        }
-        if (err && !(err instanceof ZXing.NotFoundException)) {
-          console.error(err);
-          input.value = err;
-        }
-      })
-      console.log(`Started continous decode from camera with id ${selectedDeviceId}`);
+  codeReader.decodeFromVideoDevice(selectedDeviceId, 'video', (result, err) => {
+    if (result) {
+      console.log(result);
+      input.value = result.text;
     }
-
+    if (err && !(err instanceof ZXing.NotFoundException)) {
+      console.error(err);
+      input.value = err;
+    }
+  })
+  console.log(`Started continous decode from camera with id ${selectedDeviceId}`);
+})
