@@ -1,3 +1,5 @@
+Generate qr-code and scan it.
+
 ## Demonstration
 https://vasilievi.ru/barcode/
 
