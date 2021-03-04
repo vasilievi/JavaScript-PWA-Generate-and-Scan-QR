@@ -1,6 +1,7 @@
 Generate qr-code and scan it.
 
 ## Demonstration
+<img src="/SVID-20210304-061655-1.gif" width="200" height="400" />
 https://vasilievi.ru/barcode/
 
 ## Donation
